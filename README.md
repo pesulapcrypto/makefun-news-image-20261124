@@ -1,6 +1,6 @@
 [![make.fun bounty](https://make.fun/badge/news-image-20261124.svg)](https://make.fun/bounty/news-image-20261124)
-![rank](https://make.fun/badge/news-image-20261124/pesulapcrypto/makefun-news-image-20261124/rank.svg)
-![reward](https://make.fun/badge/news-image-20261124/pesulapcrypto/makefun-news-image-20261124/reward.svg)
+[![rank](https://make.fun/badge/news-image-20261124/pesulapcrypto/makefun-news-image-20261124/rank.svg)](https://make.fun/bounty/news-image-20261124)
+[![reward](https://make.fun/badge/news-image-20261124/pesulapcrypto/makefun-news-image-20261124/reward.svg)](https://make.fun/bounty/news-image-20261124)
 
 # THE BULLION POST — Tuesday 24 November 2026
 
