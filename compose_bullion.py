@@ -167,7 +167,7 @@ def scene(d, kind, x, y, w, h):
             d.line([gx - 12, gy + 8 + i * 7, gx, gy + 8 + i * 7], fill=GOLD_L, width=2)
             d.line([gx + gw, gy + 8 + i * 7, gx + gw + 12, gy + 8 + i * 7], fill=GOLD_L, width=2)
         for i in range(5):
-            d.line([gx + 10 + i * 20, gy + gh, gx + 10 + i * 20, gy + gh + 10], fill=GOLD_L, width=2)
+            d.line([gx + 10 + i * 20, gy + gh, gx + 10 + i * 20, gy + gh + 5], fill=GOLD_L, width=2)
     elif kind == "bars":
         d.rectangle([x, y, x + w, y + h], fill=(66, 44, 18))
         for bx, by, s in [(x + 26, y + h - 30, 1), (x + 96, y + h - 30, 1), (x + 61, y + h - 52, 1), (x + w - 90, y + h - 30, 1)]:
@@ -176,7 +176,7 @@ def scene(d, kind, x, y, w, h):
         d.polygon([(x + w - 60, y + 12), (x + w - 44, y + 26), (x + w - 60, y + 40), (x + w - 76, y + 26)], fill=GOLD_L)
     elif kind == "coin":
         d.rectangle([x, y, x + w, y + h], fill=(84, 52, 16))
-        for i, (ox, r) in enumerate([(-58, 30), (0, 38), (58, 30)]):
+        for i, (ox, r) in enumerate([(-58, 26), (0, 32), (58, 26)]):
             d.ellipse([cx + ox - r, cy - r, cx + ox + r, cy + r], fill=GOLD_L, outline=GOLD, width=3)
             d.text((cx + ox, cy), "B", font=F(AR_B, r), fill=BROWN, anchor="mm")
     elif kind == "ship":
@@ -188,51 +188,51 @@ def scene(d, kind, x, y, w, h):
         d.polygon([(hx, hy), (hx + 130, hy), (hx + 112, hy + 16), (hx + 16, hy + 16)], fill=(70, 74, 80))
         d.rectangle([hx + 30, hy - 16, hx + 84, hy], fill=(90, 94, 100))
         d.polygon([(hx + 118, hy + 2), (hx + 150, hy + 12), (hx + 118, hy + 14)], fill=RED)
-        d.line([hx + 96, hy - 22, hx + 96, hy], fill=INK, width=3)
+        d.line([hx + 96, hy - 17, hx + 96, hy], fill=INK, width=3)
     elif kind == "flats":
         d.rectangle([x, y, x + w, y + h], fill=(210, 198, 178))
-        for i, (bx, bh, dmg) in enumerate([(x + 18, 52, False), (x + 92, 64, True), (x + 176, 48, False)]):
-            d.rectangle([bx, y + h - bh - 8, bx + 62, y + h - 8], fill=(150, 128, 96) if not dmg else (96, 84, 70))
+        for i, (bx, bh, dmg) in enumerate([(x + 12, 36, False), (x + 70, 42, True), (x + 128, 32, False)]):
+            d.rectangle([bx, y + h - bh - 8, bx + 54, y + h - 8], fill=(150, 128, 96) if not dmg else (96, 84, 70))
             for r_ in range(3):
                 for c_ in range(3):
-                    wx, wy = bx + 8 + c_ * 18, y + h - bh + 4 + r_ * 16
-                    d.rectangle([wx, wy, wx + 10, wy + 9], fill=(240, 220, 150))
+                    wx, wy = bx + 7 + c_ * 15, y + h - bh + 3 + r_ * 11
+                    d.rectangle([wx, wy, wx + 9, wy + 7], fill=(240, 220, 150))
             if dmg:
                 d.polygon([(bx + 20, y + h - bh - 8), (bx + 44, y + h - bh - 8), (bx + 32, y + h - 30)], fill=(40, 34, 28))
         d.rectangle([x, y + h - 8, x + w, y + h], fill=(110, 96, 74))
     elif kind == "globe":
         d.rectangle([x, y, x + w, y + h], fill=(24, 62, 92))
-        d.ellipse([cx - 34, cy - 34, cx + 34, cy + 34], fill=(64, 140, 96), outline=(220, 240, 220), width=2)
-        d.ellipse([cx - 34, cy - 34, cx + 34, cy + 34], outline=(220, 240, 220), width=1)
-        d.line([cx - 34, cy, cx + 34, cy], fill=(220, 240, 220), width=1)
-        d.line([cx, cy - 34, cx, cy + 34], fill=(220, 240, 220), width=1)
+        d.ellipse([cx - 23, cy - 23, cx + 23, cy + 23], fill=(64, 140, 96), outline=(220, 240, 220), width=2)
+        d.ellipse([cx - 23, cy - 23, cx + 23, cy + 23], outline=(220, 240, 220), width=1)
+        d.line([cx - 23, cy, cx + 23, cy], fill=(220, 240, 220), width=1)
+        d.line([cx, cy - 23, cx, cy + 23], fill=(220, 240, 220), width=1)
         d.polygon([(x + w - 46, y + 10), (x + w - 38, y + 22), (x + w - 54, y + 22)], fill=RED)
         d.rectangle([x + w - 44, y + 22, x + w - 40, y + 52], fill=RED)
     elif kind == "skyline":
         d.rectangle([x, y, x + w, y + h], fill=(226, 205, 180))
-        for i, (bx, bh) in enumerate([(x + 8, 44), (x + 62, 58), (x + 122, 38), (x + 178, 52)]):
-            d.rectangle([bx, y + h - bh - 6, bx + 48, y + h - 6], fill=(140, 118, 92))
-        d.ellipse([x + 128, y + 6, x + 168, y + 30], fill=(120, 110, 100))
-        d.ellipse([x + 148, y + 2, x + 196, y + 26], fill=(140, 128, 116))
+        for i, (bx, bh) in enumerate([(x + 6, 36), (x + 52, 44), (x + 98, 32), (x + 142, 42)]):
+            d.rectangle([bx, y + h - bh - 6, bx + 46, y + h - 6], fill=(140, 118, 92))
+        d.ellipse([x + 104, y + 6, x + 140, y + 28], fill=(120, 110, 100))
+        d.ellipse([x + 122, y + 3, x + 164, y + 25], fill=(140, 128, 116))
         d.rectangle([x, y + h - 6, x + w, y + h], fill=(100, 84, 62))
     elif kind == "palm":
         d.rectangle([x, y, x + w, y + h], fill=(250, 214, 130))
         d.ellipse([x + w - 66, y + 8, x + w - 22, y + 52], fill=(244, 160, 40))
-        d.line([x + 40, y + h, x + 52, y + 22], fill=BROWN, width=6)
-        for a in [(-38, -8), (-16, -20), (10, -22), (34, -12)]:
-            d.arc([x + 52 + a[0] - 26, y + 22 + a[1] - 10, x + 52 + a[0] + 26, y + 22 + a[1] + 14], 180, 340, fill=GREEN, width=4)
-        d.rectangle([x + 120, y + h - 26, x + 196, y + h - 12], fill=RED)
-        d.polygon([(x + 132, y + h - 26), (x + 146, y + h - 36), (x + 178, y + h - 36), (x + 188, y + h - 26)], fill=(120, 26, 20))
-        d.ellipse([x + 132, y + h - 16, x + 146, y + h - 4], fill=INK)
-        d.ellipse([x + 172, y + h - 16, x + 186, y + h - 4], fill=INK)
+        d.line([x + 44, y + h, x + 56, y + 22], fill=BROWN, width=6)
+        for a in [(-30, -8), (-12, -20), (8, -22), (28, -12)]:
+            d.arc([x + 56 + a[0] - 26, y + 22 + a[1] - 10, x + 56 + a[0] + 26, y + 22 + a[1] + 14], 180, 340, fill=GREEN, width=4)
+        d.rectangle([x + 104, y + h - 26, x + 176, y + h - 12], fill=RED)
+        d.polygon([(x + 114, y + h - 26), (x + 126, y + h - 36), (x + 156, y + h - 36), (x + 166, y + h - 26)], fill=(120, 26, 20))
+        d.ellipse([x + 114, y + h - 16, x + 128, y + h - 4], fill=INK)
+        d.ellipse([x + 152, y + h - 16, x + 166, y + h - 4], fill=INK)
     elif kind == "dome":
         d.rectangle([x, y, x + w, y + h], fill=(196, 214, 232))
-        d.arc([cx - 52, cy - 34, cx + 52, cy + 30], 180, 360, fill=(240, 244, 248), width=10)
-        d.rectangle([cx - 66, cy + 6, cx + 66, cy + 14], fill=(240, 244, 248))
+        d.arc([cx - 46, cy - 22, cx + 46, cy + 26], 180, 360, fill=(240, 244, 248), width=8)
+        d.rectangle([cx - 60, cy + 4, cx + 60, cy + 12], fill=(240, 244, 248))
         for i in range(6):
-            d.rectangle([cx - 58 + i * 20, cy + 14, cx - 52 + i * 20, cy + 34], fill=(240, 244, 248))
-        d.rectangle([cx - 70, cy + 34, cx + 70, cy + 40], fill=(210, 218, 226))
-        d.line([cx, cy - 40, cx, cy - 26], fill=INK, width=3)
+            d.rectangle([cx - 52 + i * 19, cy + 12, cx - 46 + i * 19, cy + 30], fill=(240, 244, 248))
+        d.rectangle([cx - 64, cy + 30, cx + 64, cy + 36], fill=(210, 218, 226))
+        d.line([cx, cy - 24, cx, cy - 15], fill=INK, width=3)
     elif kind == "cricket":
         d.rectangle([x, y, x + w, y + h], fill=(96, 156, 84))
         d.rectangle([cx - 14, y + 8, cx + 14, y + h - 8], fill=(226, 204, 158))
@@ -249,7 +249,7 @@ def scene(d, kind, x, y, w, h):
         d.ellipse([cx + 52, cy - 11, cx + 74, cy + 11], fill=(245, 245, 245), outline=INK, width=2)
     elif kind == "nodes":
         d.rectangle([x, y, x + w, y + h], fill=(30, 34, 74))
-        pts = [(x + 34, cy), (cx - 30, cy - 20), (cx + 16, cy + 16), (cx + 62, cy - 18), (x + w - 36, cy + 4), (cx, cy - 26)]
+        pts = [(x + 34, cy), (cx - 30, cy - 20), (cx + 16, cy + 16), (cx + 62, cy - 18), (x + w - 36, cy + 4), (cx, cy - 21)]
         for i in range(len(pts)):
             for j in range(i + 1, len(pts)):
                 d.line([pts[i], pts[j]], fill=(110, 120, 200), width=1)
@@ -257,20 +257,25 @@ def scene(d, kind, x, y, w, h):
             d.ellipse([p[0] - 7, p[1] - 7, p[0] + 7, p[1] + 7], fill=GOLD_L, outline=GOLD, width=2)
     elif kind == "bank":
         d.rectangle([x, y, x + w, y + h], fill=(216, 200, 168))
-        d.polygon([(cx - 70, cy - 26), (cx + 70, cy - 26), (cx, cy - 46)], fill=BROWN)
-        d.rectangle([cx - 70, cy - 24, cx + 70, cy - 16], fill=BROWN)
+        d.polygon([(cx - 66, cy - 12), (cx + 66, cy - 12), (cx, cy - 24)], fill=BROWN)
+        d.rectangle([cx - 66, cy - 11, cx + 66, cy - 5], fill=BROWN)
         for i in range(5):
-            d.rectangle([cx - 62 + i * 27, cy - 14, cx - 52 + i * 27, cy + 22], fill=(170, 148, 104))
-        d.rectangle([cx - 74, cy + 22, cx + 74, cy + 30], fill=BROWN)
-        d.line([cx + 44, cy - 40, cx + 78, cy - 6], fill=RED, width=4)
-        d.line([cx + 78, cy - 40, cx + 44, cy - 6], fill=RED, width=4)
+            d.rectangle([cx - 58 + i * 26, cy - 3, cx - 48 + i * 26, cy + 15], fill=(170, 148, 104))
+        d.rectangle([cx - 70, cy + 15, cx + 70, cy + 21], fill=BROWN)
+        d.line([cx + 42, cy - 20, cx + 68, cy + 2], fill=RED, width=4)
+        d.line([cx + 68, cy - 20, cx + 42, cy + 2], fill=RED, width=4)
 
 # ---------------- CARD ----------------
-def card(d, key, disp, x, y, w, h, lead=False):
+def card(img, d, key, disp, x, y, w, h, lead=False):
     num, bucket, kick, head, deck, chip, tag, sc = CARDS[key]
     d.rectangle([x, y, x + w, y + h], fill=CREAM, outline=BROWN, width=2)
     sh = 66 if lead else 50
-    scene(d, sc, x + 2, y + 2, w - 4, sh)
+    # scene is rendered on its own layer and pasted: nothing a scene draws
+    # can ever escape its strip and paint over a neighbouring card
+    layer = Image.new("RGB", (w - 4, sh), PAPER)
+    scene(ImageDraw.Draw(layer), sc, 0, 0, w - 4, sh)
+    img.paste(layer, (x + 2, y + 2))
+    d.rectangle([x, y, x + w, y + h], outline=BROWN, width=2)
     d.rectangle([x + 6, y + 6, x + 34, y + 30], fill=RED)
     d.text((x + 20, y + 18), str(disp), font=F(AR_B, 15), fill=(255, 255, 255), anchor="mm")
     cw = d.textlength(chip, font=F(AR_B, 10))
@@ -400,13 +405,13 @@ def build(variant, out):
     ly, lh = 332, 168
     lw = (W - 32) // 3
     for i, k in enumerate(leads):
-        card(d, k, i + 1, 8 + i * (lw + 8), ly, lw, lh, lead=True)
+        card(img, d, k, i + 1, 8 + i * (lw + 8), ly, lw, lh, lead=True)
     # grid
     gy, gh = 508, 140
     gw = (W - 48) // 5
     for i, k in enumerate(grid):
         r_, c_ = divmod(i, 5)
-        card(d, k, 4 + i, 8 + c_ * (gw + 8), gy + r_ * (gh + 8), gw, gh)
+        card(img, d, k, 4 + i, 8 + c_ * (gw + 8), gy + r_ * (gh + 8), gw, gh)
     # bottom band
     by = 796
     pins = []
